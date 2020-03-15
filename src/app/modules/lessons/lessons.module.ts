@@ -8,8 +8,12 @@ import { UpcomingLessonsComponent } from './pages/upcoming-lessons/upcoming-less
 // Directives
 import { DefaultImageDirective } from './directives/default-image.directive';
 
+// Services
+import { LessonsService } from './lessons.service';
+
 @NgModule({
     declarations: [UpcomingLessonsComponent, LessonComponent, DefaultImageDirective],
-    imports: [CommonModule]
+    imports: [CommonModule],
+    providers: [LessonsService]
 })
 export class LessonsModule {}
