@@ -11,9 +11,12 @@ import { DefaultImageDirective } from './directives/default-image.directive';
 // Services
 import { LessonsService } from './lessons.service';
 
+// Adapters
+import { CourseAdapter } from './models/course.model';
+
 @NgModule({
     declarations: [UpcomingLessonsComponent, LessonComponent, DefaultImageDirective],
     imports: [CommonModule],
-    providers: [LessonsService]
+    providers: [LessonsService, CourseAdapter]
 })
 export class LessonsModule {}

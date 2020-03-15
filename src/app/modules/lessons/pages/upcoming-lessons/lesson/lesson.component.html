@@ -1,27 +1,37 @@
 <div class="row lesson">
     <div class="row width-3">
         <div class="col">
-            <img class="avatar" src="https://placehold" default="assets/icons/user_placeholder.png" />
+            <img
+                class="avatar"
+                [src]="course?.courseSubjectThumbnailUrl"
+                default="assets/icons/user_placeholder.png"
+            />
         </div>
         <div class="col">
-            <div class="lesson-title">The Cell</div>
+            <div class="lesson-title">{{ course?.courseTitle }}</div>
             <div class="lesson-description">
                 <span>
-                    Let's see how the fundamental unit of life - cells - work. We'll talk a tour of the organelles and explore how
-                    prokaryotes organism change their genome through conjugation, transaction, and transformation.
+                    {{ course?.courseDescription }}
                 </span>
             </div>
         </div>
     </div>
     <div class="col width-1">
         <div class="row">
-            <img class="avatar" src="https://placehold" default="assets/icons/user_placeholder.png" />
-            <span class="instructor-name">Tyler Fara</span>
+            <img
+                class="avatar"
+                [src]="course?.courseInstructorThumbnailUrl"
+                default="assets/icons/user_placeholder.png"
+            />
+            <span class="instructor-name">{{ course?.courseInstructorName }}</span>
         </div>
     </div>
     <div class="col width-1">
         <div class="row lesson-time">
-            <span>6:00 PM - 7:00 PM IST</span>
+            <span
+                >{{ getCourseStartTime() | date: 'h:00 aa' }} -
+                {{ getCourseEndTime() | date: 'h:00 aa' }}&nbsp;EDT</span
+            >
         </div>
     </div>
 </div>

@@ -23,12 +23,13 @@ $secondary_color: #423c3c;
         color: $secondary_color;
     }
 
-    .instructor-name {
-        color: $secondary_color;
-        margin-left: 15px;
-    }
-
+    .instructor-name,
     .lesson-time {
         color: $secondary_color;
+        font-weight: 600;
+        font-size: 14px;
+    }
+    .instructor-name {
+        margin-left: 15px;
     }
 }
