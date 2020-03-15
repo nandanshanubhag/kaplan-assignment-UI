@@ -1,32 +1,6 @@
 <div class="container">
     <div class="lessons-group" *ngFor="let i of [1, 2, 3]">
         <div class="lesson-date">Wed, March 30, 2016</div>
-        <div class="row lesson" *ngFor="let i of [1, 2, 3]">
-            <div class="row width-3">
-                <div class="col">
-                    <img class="avatar" src="https://placehold" default="assets/icons/user_placeholder.png" />
-                </div>
-                <div class="col">
-                    <div class="lesson-title">The Cell</div>
-                    <div class="lesson-description">
-                        <span>
-                            Let's see how the fundamental unit of life - cells - work. We'll talk a tour of the organelles and explore how
-                            prokaryotes organism change their genome through conjugation, transaction, and transformation.
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col width-1">
-                <div class="row">
-                    <img class="avatar" src="https://placehold" default="assets/icons/user_placeholder.png" />
-                    <span class="instructor-name">Tyler Fara</span>
-                </div>
-            </div>
-            <div class="col width-1">
-                <div class="row lesson-time">
-                    <span>6:00 PM - 7:00 PM IST</span>
-                </div>
-            </div>
-        </div>
+        <app-lesson *ngFor="let i of [1, 2, 3]"></app-lesson>
     </div>
 </div>
