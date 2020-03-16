@@ -1,0 +1,37 @@
+<div class="row lesson">
+    <div class="row width-3">
+        <div class="col">
+            <img
+                class="avatar"
+                [src]="course?.courseSubjectThumbnailUrl"
+                default="assets/icons/user_placeholder.png"
+            />
+        </div>
+        <div class="col">
+            <div class="lesson-title">{{ course?.courseTitle }}</div>
+            <div class="lesson-description">
+                <span>
+                    {{ course?.courseDescription }}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col width-1">
+        <div class="row">
+            <img
+                class="avatar"
+                [src]="course?.courseInstructorThumbnailUrl"
+                default="assets/icons/user_placeholder.png"
+            />
+            <span class="instructor-name">{{ course?.courseInstructorName }}</span>
+        </div>
+    </div>
+    <div class="col width-1">
+        <div class="row lesson-time">
+            <span
+                >{{ getCourseStartTime() | date: 'h:00 aa' }} -
+                {{ getCourseEndTime() | date: 'h:00 aa' }}&nbsp;EDT</span
+            >
+        </div>
+    </div>
+</div>

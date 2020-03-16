@@ -1,0 +1,35 @@
+$secondary_color: #423c3c;
+
+.avatar {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.lesson {
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #b3b4bb69;
+
+    .lesson-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .lesson-description {
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: 500;
+        color: $secondary_color;
+    }
+
+    .instructor-name,
+    .lesson-time {
+        color: $secondary_color;
+        font-weight: 600;
+        font-size: 14px;
+    }
+    .instructor-name {
+        margin-left: 15px;
+    }
+}

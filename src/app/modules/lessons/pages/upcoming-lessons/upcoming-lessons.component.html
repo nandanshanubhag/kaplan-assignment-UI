@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="lessons-group" *ngFor="let group of courseGroup">
+        <!-- <div class="lesson-date">Wed, March 30, 2016</div> -->
+        <div class="lesson-date">{{ group.date | date: 'EEE, MMMM dd, yyyy' }}</div>
+        <app-lesson [course]="course" *ngFor="let course of group.courses"></app-lesson>
+    </div>
+</div>
