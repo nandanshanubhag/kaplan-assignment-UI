@@ -21,36 +21,13 @@ export class UpcomingLessonsComponent implements OnInit {
         this.getUpcomingLessons();
     }
 
+    /**
+     * @description: Get course data
+     */
     private getUpcomingLessons() {
         this.lessonsService.getUpcomingLessons().subscribe(
-            (res: Course[]) => {
-                console.log('upcoming lessons', res);
-
-                const groups = res.reduce((group, course) => {
-                    const { courseDate } = course;
-                    if (!group[courseDate]) {
-                        group[courseDate] = [];
-                    }
-                    group[courseDate].push(course);
-                    return group;
-                }, {});
-
-                // Sort the group keys in ascending order
-                const keys = Object.keys(groups).sort((a: any, b: any) =>
-                    a > b ? 1 : a < b ? -1 : 0
-                );
-
-                this.courseGroup = keys.map(key => {
-                    // Sort all the courses under each key in ascending order
-                    const courses = groups[key].sort((course1: Course, course2: Course) => {
-                        const time1 = course1.courseTime;
-                        const time2 = course2.courseTime;
-                        return time1 > time2 ? 1 : time1 < time2 ? -1 : 0;
-                    });
-
-                    return new CourseGroup(key, courses);
-                });
-                console.log('course group', this.courseGroup);
+            (courses: Course[]) => {
+                this.courseGroup = this.groupCourses(courses);
             },
             err => {
                 console.log('Error while getting upcoming lessons', err.message);
@@ -58,5 +35,34 @@ export class UpcomingLessonsComponent implements OnInit {
         );
     }
 
-    private formatCourseData() {}
+    /**
+     * Function to organize the courses into groups
+     * @param courses : courses
+     */
+    private groupCourses(courses: Course[]) {
+        // Group the courses on dates
+        const groups = courses.reduce((group, course) => {
+            const { courseDate } = course;
+            if (!group[courseDate]) {
+                group[courseDate] = [];
+            }
+            group[courseDate].push(course);
+            return group;
+        }, {});
+
+        // Sort the group keys in ascending order
+        const keys = Object.keys(groups).sort((a: any, b: any) => (a > b ? 1 : a < b ? -1 : 0));
+
+        // Create a course group array using the date and courses under the date
+        return keys.map(key => {
+            // Sort all the courses under each key in ascending order
+            const sortedCourses = groups[key].sort((course1: Course, course2: Course) => {
+                const time1 = course1.courseTime;
+                const time2 = course2.courseTime;
+                return time1 > time2 ? 1 : time1 < time2 ? -1 : 0;
+            });
+
+            return new CourseGroup(key, sortedCourses);
+        });
+    }
 }
